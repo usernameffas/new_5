@@ -1,43 +1,45 @@
 import numpy as np
-import os
 
-def design_dome():
-    """
-    Analyzes Mars base parts data to find and save weak parts.
-    """
-    # Define the file paths
-    files = ['mars_base_main_parts-001.csv', 'mars_base_main_parts-002.csv', 'mars_base_main_parts-003.csv']
-    arr_list = []
+# 1. numpy 임포트 (위에서 완료)
 
-    # Load the three CSV files into numpy arrays
-    try:
-        for file in files:
-            # Check if the file exists before loading
-            if not os.path.exists(file):
-                print(f"Error: The file '{file}' was not found.")
-                return
-            arr_list.append(np.loadtxt(file, delimiter=','))
-    except Exception as e:
-        print(f"An error occurred while loading the data: {e}")
-        return
+# 2. CSV 파일들을 numpy를 사용해서 읽어들여 ndarray로 생성
+try:
+    arr1 = np.loadtxt('mars_base_main_parts-001.csv', delimiter=',', skiprows=1)
+    arr2 = np.loadtxt('mars_base_main_parts-002.csv', delimiter=',', skiprows=1)
+    arr3 = np.loadtxt('mars_base_main_parts-003.csv', delimiter=',', skiprows=1)
+    print('모든 CSV 파일을 성공적으로 로드했습니다.')
+except FileNotFoundError as e:
+    print(f'오류: 파일을 찾을 수 없습니다 - {e}')
+    exit(1)
+except Exception as e:
+    print(f'CSV 파일 로드 오류: {e}')
+    exit(1)
 
-    # Merge the three arrays into one
-    parts = np.concatenate(arr_list, axis=0)
+# 3. 3개의 배열을 하나로 합치고 parts라는 ndarray 생성
+parts = np.concatenate((arr1, arr2, arr3), axis=0)
+print(f'병합된 배열의 크기: {parts.shape}')
 
-    # Calculate the average value
-    average_value = np.mean(parts)
-    print(f"The average value of all parts is: {average_value}")
+# 4. parts를 이용해서 각 항목의 평균값 구하기
+mean_values = np.mean(parts, axis=1)
+print(f'평균값 계산 완료, 크기: {mean_values.shape}')
 
-    # Find values less than 50
-    parts_to_work_on = parts[parts < 50]
+# 5. 평균값이 50보다 작은 값을 뽑아내서 parts_to_work_on.csv로 저장
+parts_below_50_mask = mean_values < 50
+parts_to_work_on = parts[parts_below_50_mask]
 
-    # Save the filtered values to a new CSV file
-    output_filename = 'parts_to_work_on.csv'
-    try:
-        np.savetxt(output_filename, parts_to_work_on, fmt='%d', delimiter=',')
-        print(f"Successfully saved '{output_filename}'.")
-    except Exception as e:
-        print(f"An error occurred while saving the file: {e}")
+# 예외처리와 함께 CSV 파일로 저장
+try:
+    np.savetxt('parts_to_work_on.csv', parts_to_work_on, delimiter=',', fmt='%.6f')
+    print(f'평균 < 50인 {parts_to_work_on.shape[0]}개 부품을 parts_to_work_on.csv에 성공적으로 저장했습니다.')
+except Exception as e:
+    print(f'parts_to_work_on.csv 저장 오류: {e}')
+    exit(1)
 
-if __name__ == '__main__':
-    design_dome()
+# 분석 결과 출력
+print(f'\n분석 결과:')
+print(f'전체 분석된 부품 수: {parts.shape[0]}')
+print(f'보강이 필요한 부품 수 (평균 < 50): {parts_to_work_on.shape[0]}')
+print(f'전체 부품의 평균 강도: {np.mean(parts):.2f}')
+print(f'보강이 필요한 부품 비율: {(parts_to_work_on.shape[0] / parts.shape[0]) * 100:.1f}%')
+
+print('\n화성 기지 취약점 분석이 성공적으로 완료되었습니다!')
