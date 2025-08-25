@@ -1,150 +1,48 @@
-36
-45
-11
-32
-37
-35
-37
-3
-9
-25
-31
-10
-48
-28
-26
-31
-12
-34
-34
-34
-21
-47
-43
-18
-12
-22
-5
-24
-27
-22
-41
-35
-39
-8
-18
-9
-23
-12
-3
-8
-27
-30
-13
-29
-46
-44
-47
-49
-35
-12
-1
-18
-29
-7
-43
-9
-9
-28
-2
-36
-3
-8
-3
-6
-30
-49
-11
-34
-39
-40
-14
-2
-4
-33
-14
-24
-20
-19
-6
-37
-17
-35
-21
-27
-14
-43
-43
-17
-20
-42
-1
-27
-29
-14
-28
-18
-48
-6
-32
-44
-46
-14
-6
-15
-5
-25
-18
-23
-10
-29
-30
-47
-42
-24
-22
-37
-3
-9
-36
-16
-29
-25
-23
-35
-34
-35
-27
-11
-22
-2
-2
-14
-7
-12
-42
-28
-21
-31
-17
-39
-21
-12
-18
-18
-49
-45
-15
-33
-11
-2
+parts,average_strength
+Glass,49.67
+Rebar,49.33
+Stone,18.33
+Cement,36.33
+Wallpaper,28.00
+Ceiling material,17.00
+Drywall,44.00
+Non-ferrous metal,46.33
+Steel frame,30.67
+Soil,45.33
+Steel frame structure,43.00
+Asphalt shingles,37.33
+Concrete blocks,38.00
+Fasteners,44.00
+Metal mesh,43.00
+Brick mortar,33.00
+Door frame,37.33
+Concrete mixer,37.67
+Ladder,48.00
+Jackhammer,20.00
+Ceiling grid,48.33
+Brickwork,35.33
+Blinds,43.67
+Joint compound,19.33
+Wire mesh,48.33
+Radiator,37.00
+Drywall screws,35.33
+Hydraulic push,41.00
+Wire cable,34.00
+Block wall,34.67
+Reinforced concrete block,12.67
+Outlet box,17.33
+Wooden ladder,48.00
+Gypsum base,16.67
+Building paper,33.67
+Countertop,16.67
+Projection base,44.33
+Exterior brick,16.33
+Building trim,25.67
+Ceramic tile,43.67
+Projection window,46.67
+Hasp,22.00
+Door stop,42.00
+Brick wall,44.33
+Air filter,43.67
+Tile joint material,28.00
+Stair runner,36.67
